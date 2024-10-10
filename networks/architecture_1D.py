@@ -113,7 +113,7 @@ class Conjugacy(Model):
     
     
     def call(self, x):
-        encoded = self.encoder(x[0])
+        encoded = self.encoder(x[0]) #there is error with try to apply for rossler system due to shape xpn = 1ndim while the code minumim 2dim
         encoded_p1 = self.c1*encoded + self.c2*tf.square(encoded) + self.c3*tf.math.multiply(tf.square(encoded),encoded) + self.c4*tf.math.multiply(tf.square(encoded),tf.square(encoded)) + self.c5*tf.math.multiply(tf.math.multiply(tf.square(encoded),tf.square(encoded)),encoded)
         decoded = self.decoder(encoded_p1)
         
